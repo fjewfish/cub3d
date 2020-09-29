@@ -1,6 +1,6 @@
 #include "main_header_v2.h"
 
-void	ft_cub(char *cub, int bmp)
+int		ft_cub(char *cub, int bmp)
 {
 	t_all *aio;
 
@@ -9,20 +9,21 @@ void	ft_cub(char *cub, int bmp)
 	ft_initialization(aio);
 	aio->mlx.ptr = mlx_init();
 	mlx_get_screen_size(aio->mlx.ptr, &aio->res.display_x, &aio->res.display_y);
-	ft_printf("YOUR DISPLAY RES = %dx%d",  aio->res.display_x, aio->res.display_y);
-if (ft_parse(aio, cub) == -1)
+	ft_printf("YOUR DISPLAY RES = %dx%d\n",  aio->res.display_x, aio->res.display_y);
+	if (ft_parse(aio, cub) == -1)
 		return (ft_close(aio, 0));
+ft_print_parse(aio);
 	if (bmp == 1)
-		return (ft_bitmap(&s));
-	ft_rotate(&s, 1);
-	ft_move(&s, 1);
-	ft_rotate(&s, -1);
-	ft_move(&s, -1);
-	s.win.ptr = mlx_new_window(s.mlx.ptr, s.win.x, s.win.y, "cub3D");
-	ft_draw(&s);
-	mlx_hook(s.win.ptr, 2, 0, ft_key, &s);
-	mlx_hook(s.win.ptr, 17, 0, ft_close, &s);
-	mlx_loop(s.mlx.ptr);
+		return (ft_bmp_save(aio));
+	aio->win.ptr = mlx_new_window(aio->mlx.ptr, aio->res.map_x, aio->res.map_y, "cub3D");
+	ft_draw(aio);
+	mlx_hook(aio->win.ptr, 2, 0, ft_press, aio);
+	mlx_hook(aio->win.ptr, 3, 0, ft_release, aio);
+	//mlx_hook(aio->win.ptr, 6, 0, ft_mouse, &s);
+	mlx_hook(aio->win.ptr, 17, 0, ft_close, aio);
+	mlx_loop_hook(aio->mlx.ptr, ft_key, aio);
+	mlx_loop(aio->mlx.ptr);
+	return (1);
 }
 
 int		main(int ac, char **av)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   malloc_gc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fjewfish <fjewfish@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fjewfish <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 03:02:50 by fjewfish          #+#    #+#             */
-/*   Updated: 2020/09/26 15:47:47 by fjewfish         ###   ########.fr       */
+/*   Updated: 2020/09/28 18:05:08 by fjewfish         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void			memory_manager(void *ptr, t_bool action)
 		ft_lstdelel(&collector, ptr, pointer_compare, pointer_free);
 }
 
-char	*ft_strdup_gc(const char *s1)
+char	*ft_strdup_gc(char *s1)
 {
 	char *s_cpy;
 

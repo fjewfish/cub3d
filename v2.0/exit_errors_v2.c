@@ -1,5 +1,26 @@
 #include "main_header_v2.h"
 
+int		ft_close(t_all *aio, int win)
+{
+	//int	i;
+
+	//i = 0;
+	//while (i < s->map.y)
+	//	free(s->map.tab[i++]);
+	//free(s->map.tab);
+	//free(s->tex.n);
+	//free(s->tex.s);
+	//free(s->tex.e);
+	//free(s->tex.w);
+	//free(s->tex.i);
+	//memory_manager(NULL, M_ADD);
+	if (win == 1)
+		mlx_destroy_window(aio->mlx.ptr, aio->win.ptr);
+	free(aio->mlx.ptr);
+	exit(0);
+	return (1);
+}
+
 int		ft_strerror(int err)
 {
 	(err == -1) ? write(2, "Error : Couldn't open file (FD)\n", 32) : 0;

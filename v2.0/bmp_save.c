@@ -6,11 +6,11 @@
 //	int				j;
 //	unsigned char	buffer[4];
 
-//	i = s->win.x * (s->win.y - 1);
+//	i = s->res.map_x * (s->res.map_y - 1);
 //	while (i >= 0)
 //	{
 //		j = 0;
-//		while (j < s->win.x)
+//		while (j < s->res.map_x)
 //		{
 //			buffer[0] = (unsigned char)(s->img.adr[i] % 256);
 //			buffer[1] = (unsigned char)(s->img.adr[i] / 256 % 256);
@@ -20,7 +20,7 @@
 //			i++;
 //			j++;
 //		}
-//		i -= 2 * s->win.x;
+//		i -= 2 * s->res.map_x;
 //	}
 //}
 
@@ -33,12 +33,12 @@
 //	while (n < 40)
 //		header[n++] = (unsigned char)(0);
 //	header[0] = (unsigned char)(40);
-//	n = s->win.x;
+//	n = s->res.map_x;
 //	header[4] = (unsigned char)(n % 256);
 //	header[5] = (unsigned char)(n / 256 % 256);
 //	header[6] = (unsigned char)(n / 256 / 256 % 256);
 //	header[7] = (unsigned char)(n / 256 / 256 / 256);
-//	n = s->win.y;
+//	n = s->res.map_y;
 //	header[8] = (unsigned char)(n % 256);
 //	header[9] = (unsigned char)(n / 256 % 256);
 //	header[10] = (unsigned char)(n / 256 / 256 % 256);
@@ -58,7 +58,7 @@
 //		header[n++] = (unsigned char)(0);
 //	header[0] = (unsigned char)(66);
 //	header[1] = (unsigned char)(77);
-//	n = s->win.x * s->win.y * 4 + 54;
+//	n = s->res.map_x * s->res.map_y * 4 + 54;
 //	header[2] = (unsigned char)(n % 256);
 //	header[3] = (unsigned char)(n / 256 % 256);
 //	header[4] = (unsigned char)(n / 256 / 256 % 256);

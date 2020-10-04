@@ -93,12 +93,12 @@ void	ft_pos(t_all *aio)
 //		return (-1);
 //	i = 0;
 //	j = 0;
-//	while (j < s->map.y)
+//	while (j < s->map.height)
 //	{
 //		k = 0;
-//		while (k < s->map.x)
+//		while (k < s->map.width)
 //		{
-//			if (s->map.tab[j][k] == '2')
+//			if (s->map.map[j][k] == '2')
 //			{
 //				s->spr[i].y = (double)j + 0.5;
 //				s->spr[i++].x = (double)k + 0.5;

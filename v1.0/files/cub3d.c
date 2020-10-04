@@ -3,14 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fjewfish <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fjewfish <fjewfish@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 15:00:04 by cclaude           #+#    #+#             */
-/*   Updated: 2020/09/22 19:08:38 by fjewfish         ###   ########.fr       */
+/*   Updated: 2020/10/04 18:44:05 by fjewfish         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+void	ft_print_parse(t_all aio)
+{
+	int i;
+
+	i = 0;
+	while(aio.map.tab[i])
+	{
+		printf("%s\n", aio.map.tab[i]);
+		i++;
+	}
+	// printf("", aio.win.x, aio.win.y, aio.map.y, aio.map.x);
+	printf("MAP w=%d h=%d\n", aio.map.x, aio.map.y);
+	printf("res=%dx%d\n", aio.win.y, aio.win.x);
+	printf("PLAYER\n pos_x=%f pos_y=%f dir_x%f dir_y%f\n", aio.pos.x, aio.pos.y, aio.dir.x, aio.dir.y);
+	printf("RAY x=%f y=%f i=%d v=%f w=%f\n", aio.ray.x, aio.ray.y, aio.ray.i,aio.ray.v,aio.ray.w);
+	printf("HIT x=%f y=%f d=%f", aio.hit.x, aio.hit.y, aio.hit.d);
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////
 
 void	ft_draw(t_all *s)
 {
@@ -29,6 +49,9 @@ void	ft_draw(t_all *s)
 	s->hit = hit;
 	ft_screen(s);
 	mlx_put_image_to_window(s->mlx.ptr, s->win.ptr, s->img.ptr, 0, 0);
+
+ft_print_parse(*s);
+
 	free(s->img.ptr);
 	free(s->img.adr);
 }
@@ -47,6 +70,9 @@ int		ft_cubed(t_all s, char *cub, int bmp)
 	s.mlx.ptr = mlx_init();
 	if (ft_parse(&s, cub) == -1)
 		return (ft_close(&s, 0));
+
+ft_print_parse(s);
+
 	if (bmp == 1)
 		return (ft_bitmap(&s));
 	ft_rotate(&s, 1);
@@ -123,3 +149,4 @@ int		main(int ac, char **av)
 		write(2, "Error : Invalid arguments\n", 26);
 	return (0);
 }
+

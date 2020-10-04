@@ -5,9 +5,9 @@ int		ft_close(t_all *aio, int win)
 	//int	i;
 
 	//i = 0;
-	//while (i < s->map.y)
-	//	free(s->map.tab[i++]);
-	//free(s->map.tab);
+	//while (i < s->map.height)
+	//	free(s->map.map[i++]);
+	//free(s->map.map);
 	//free(s->tex.n);
 	//free(s->tex.s);
 	//free(s->tex.e);

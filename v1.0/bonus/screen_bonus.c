@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   screen_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fjewfish <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/09 19:32:10 by cclaude           #+#    #+#             */
-/*   Updated: 2020/01/14 16:51:59 by cclaude          ###   ########.fr       */
+/*   Updated: 2020/09/29 19:14:53 by fjewfish         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,13 @@ void	ft_ver(t_all *s)
 	while ((int)floor(y) > 0 && (int)floor(y) < s->map.y)
 	{
 		c = s->map.tab[(int)floor(y)][(int)floor(x - 1 + s->ray.v)];
-		if (ft_is(WALL, c) || ft_is(DOOR, c))
+		if (ft_is(WALL, c))
 		{
 			s->hit.x = x;
 			s->hit.y = y;
 			s->hit.d = hypot(x - s->pos.x, y - s->pos.y);
 			s->hit.c = c;
-			ft_is(DOOR, c) ? ft_verdoor(s, x, y) : 0;
+			//ft_is(DOOR, c) ? ft_verdoor(s, x, y) : 0;
 			return ;
 		}
 		x += (2 * s->ray.v - 1);
@@ -77,7 +77,7 @@ void	ft_hor(t_all *s)
 	while ((int)floor(x) > 0 && (int)floor(x) < s->map.x)
 	{
 		c = s->map.tab[(int)floor(y - 1 + s->ray.w)][(int)floor(x)];
-		if (ft_is(WALL, c) || ft_is(DOOR, c))
+		if (ft_is(WALL, c))
 		{
 			if (s->hit.d > hypot(x - s->pos.x, y - s->pos.y) && ft_is(WALL, c))
 			{
@@ -86,8 +86,8 @@ void	ft_hor(t_all *s)
 				s->hit.d = hypot(x - s->pos.x, y - s->pos.y);
 				s->hit.c = c;
 			}
-			else if (s->hit.d > hypot(x - s->pos.x, y - s->pos.y))
-				ft_hordoor(s, x, y);
+			//else if (s->hit.d > hypot(x - s->pos.x, y - s->pos.y))
+			//	ft_hordoor(s, x, y);
 			return ;
 		}
 		y += (2 * s->ray.w - 1);
@@ -103,10 +103,10 @@ void	ft_screen(t_all *s)
 
 	s->img.ptr = mlx_new_image(s->mlx.ptr, s->win.x, s->win.y);
 	s->img.adr = (unsigned int *)mlx_get_data_addr(s->img.ptr, &bpp, &sl, &end);
-	ft_sky(s);
-	s->ray.i = 0;
-	while (s->ray.i < s->win.y / 2)
-		ft_floor(s);
+	//ft_sky(s);
+	//s->ray.i = 0;
+	//while (s->ray.i < s->win.y / 2)
+	//	ft_floor(s);
 	s->stk = malloc(sizeof(t_stk) * s->win.x);
 	s->ray.i = 0;
 	while (s->ray.i < s->win.x)
@@ -119,6 +119,6 @@ void	ft_screen(t_all *s)
 		ft_column(s, ft_size(s));
 		s->ray.i++;
 	}
-	ft_sprite(s);
-	ft_hud(s);
+	//ft_sprite(s);
+	//ft_hud(s);
 }

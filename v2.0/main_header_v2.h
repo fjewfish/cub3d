@@ -44,6 +44,8 @@
 # define DOOR 6
 # define ENEMY 7
 
+# define SHADOW 35
+
 //MAlLOC_GC
 # define M_ADD 1
 # define M_REMOVE 0
@@ -67,9 +69,10 @@ typedef struct	s_img
 {
 	void			*ptr;
 	unsigned int	*adr;
-	int				bpp;
-	int				sl;
-	int				end;
+	int				bits_per_pixel;
+	int				line_length;
+	//int				end;
+	int				endian;
 	// int				fsh;
 }				t_img;
 
@@ -209,12 +212,18 @@ int		ft_bmp_save(t_all *aio);
 
 
 //PUT_IMAGE
-int		ft_draw(t_all *aio);
-void	ft_screen(t_all *aio);
-void	ft_ray(t_all *aio);
-void	ft_dir(t_all *aio);
-void	ft_ver(t_all *aio);
-void	ft_hor(t_all *aio);
+int		ft_draw(t_all *s);
+void	ft_screen(t_all *s);
+void	ft_ray(t_all *s);
+void	ft_dir(t_all *s);
+void	ft_ver(t_all *s);
+void	ft_hor(t_all *s);
+//int		ft_draw(t_all *aio);
+//void	ft_screen(t_all *aio);
+//void	ft_ray(t_all *aio);
+//void	ft_dir(t_all *aio);
+//void	ft_ver(t_all *aio);
+//void	ft_hor(t_all *aio);
 void			ft_stock(t_all *aio);
 void			ft_column(t_all *aio, int size);
 int				ft_size(t_all *aio);
@@ -243,5 +252,13 @@ int		ft_press(int key, void *arg);
 int		ft_set(t_all *s, int key, int set);
 int		ft_release(int key, void *arg);
 int		ft_key(t_all *aio);
+unsigned int	ft_shadow(t_all *aio, unsigned int col);
 
+
+
+
+
+
+//MAP
+void	ft_map_mode(t_all *aio);
 #endif

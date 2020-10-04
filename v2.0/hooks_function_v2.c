@@ -180,6 +180,32 @@ int		ft_key(t_all *aio)
 	//	if (aio->hud.f == 0)
 	//		s->hud.f++;
 	//}
-	ft_draw(aio);
+
+
+
+	//ft_draw(aio);
+	ft_map_mode(aio);
+
+
+
+
+	//ft_global_map(aio);
 	return (1);
 }
+
+//ft_global_map(t_all *aio)
+//{
+//	aio->img.ptr = NULL;
+//	aio->img.adr = NULL;
+//	free(aio->img.ptr);
+//	free(aio->img.adr);
+//	ft_map_mod(aio);
+//	mlx_put_image_to_window(aio->mlx.ptr, aio->win.ptr, aio->img.ptr, 0, 0);
+//}
+
+//void	ft_map_mod(t_all *aio)
+//{
+//	aio->img.ptr = mlx_new_image(aio->mlx.ptr, aio->res.map_x, aio->res.map_y);
+//	aio->img.adr = (unsigned int *)mlx_get_data_addr(aio->img.ptr, &aio->img.bpp, &aio->img.sl, &aio->img.end);
+
+//}
